@@ -1,0 +1,1691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Supriya Bhandari Chettri - YouTube Creator Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            background-color: #0f0f0f;
+            color: #f1f1f1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .app-container {
+            width: 100%;
+            max-width: 420px;
+            height: 100%;
+            max-height: 100vh;
+            background-color: #0f0f0f;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(255,255,255,0.1);
+        }
+
+        .top-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            background-color: #0f0f0f;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .top-header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .top-header-right {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .icon-btn {
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .main-content {
+            flex: 1;
+            overflow-y: auto;
+            padding-bottom: 70px;
+            scroll-behavior: smooth;
+        }
+
+        .main-content::-webkit-scrollbar {
+            display: none;
+        }
+
+        .channel-profile-section {
+            padding: 12px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .channel-info {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .profile-pic {
+            width: 76px;
+            height: 76px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .channel-details h1 {
+            font-size: 22px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .channel-meta-handle {
+            font-size: 14px;
+            font-weight: 500;
+            color: #ffffff;
+            margin-top: 4px;
+        }
+
+        .channel-meta-stats {
+            font-size: 13px;
+            color: #aaa;
+            margin-top: 2px;
+        }
+
+        .channel-bio {
+            font-size: 13px;
+            color: #aaa;
+            line-height: 1.4;
+            margin-top: 4px;
+            cursor: pointer;
+        }
+
+        .more-link {
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 4px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 9px 0;
+            border-radius: 20px;
+            border: none;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-secondary {
+            background-color: #272727;
+            color: #ffffff;
+        }
+
+        .content-tabs {
+            display: flex;
+            border-bottom: 1px solid #272727;
+            padding: 0 16px;
+            margin-top: 8px;
+        }
+
+        .tab-item {
+            padding: 12px 16px;
+            font-size: 15px;
+            font-weight: 500;
+            color: #aaa;
+            cursor: pointer;
+        }
+
+        .tab-item.active {
+            color: #ffffff;
+            border-bottom: 2px solid #ffffff;
+        }
+
+        .filter-chips {
+            display: flex;
+            gap: 8px;
+            padding: 12px 16px;
+            overflow-x: auto;
+        }
+
+        .filter-chips::-webkit-scrollbar {
+            display: none;
+        }
+
+        .chip {
+            padding: 6px 14px;
+            border-radius: 8px;
+            background-color: #272727;
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .chip.active {
+            background-color: #ffffff;
+            color: #0f0f0f;
+        }
+
+        .video-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            padding: 4px 16px 20px 16px;
+        }
+
+        .video-card {
+            display: flex;
+            gap: 12px;
+            cursor: pointer;
+            align-items: flex-start;
+        }
+
+        .thumbnail-wrapper {
+            position: relative;
+            width: 145px;
+            height: 82px;
+            flex-shrink: 0;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #272727;
+        }
+
+        .thumbnail-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .duration-badge {
+            position: absolute;
+            bottom: 4px;
+            right: 4px;
+            background-color: rgba(0, 0, 0, 0.85);
+            color: #fff;
+            font-size: 11px;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        .video-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .video-title {
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.35;
+            color: #f1f1f1;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .video-stats {
+            font-size: 12px;
+            color: #aaa;
+            margin-top: 2px;
+        }
+
+        /* SHORTS GRID STYLES */
+        .shorts-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4px;
+            padding: 4px 4px 20px 4px;
+        }
+
+        .short-card {
+            position: relative;
+            aspect-ratio: 9/16;
+            background-color: #272727;
+            border-radius: 4px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .short-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ANALYTICS STYLES */
+        .analytics-top-profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 16px;
+            text-align: center;
+            gap: 8px;
+        }
+
+        .analytics-top-profile img {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .analytics-top-profile h2 {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .analytics-top-profile .sub-count {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .analytics-top-profile .sub-label {
+            font-size: 13px;
+            color: #aaa;
+        }
+
+        .analytics-section-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 16px;
+            margin-top: 8px;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .analytics-section-title span:last-child {
+            font-size: 13px;
+            color: #aaa;
+            font-weight: 500;
+        }
+
+        .analytics-metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            padding: 12px 16px;
+        }
+
+        .analytics-metric-box {
+            background-color: #1f1f1f;
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            border: 1px solid #272727;
+        }
+
+        .analytics-metric-box .m-title {
+            font-size: 13px;
+            color: #aaa;
+        }
+
+        .analytics-metric-box .m-value {
+            font-size: 22px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .analytics-content-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding: 12px 16px 24px 16px;
+        }
+
+        .analytics-content-card {
+            background-color: #1f1f1f;
+            border-radius: 12px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            border: 1px solid #272727;
+            cursor: pointer;
+        }
+
+        .analytics-card-top {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .analytics-card-thumb {
+            width: 90px;
+            height: 52px;
+            border-radius: 6px;
+            object-fit: cover;
+            background-color: #272727;
+            flex-shrink: 0;
+        }
+
+        .analytics-card-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .analytics-card-title {
+            font-size: 13px;
+            font-weight: 500;
+            color: #f1f1f1;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .analytics-card-time {
+            font-size: 12px;
+            color: #aaa;
+        }
+
+        .analytics-card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid #272727;
+            padding-top: 8px;
+            font-size: 13px;
+            color: #aaa;
+        }
+
+        .analytics-stat-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Player & Modals */
+        .player-modal-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #0f0f0f;
+            z-index: 150;
+            display: none;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .player-video-box {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background-color: #000;
+            position: sticky;
+            top: 0;
+            z-index: 160;
+            overflow: hidden;
+        }
+
+        .player-video-box iframe {
+            width: 100%;
+            height: 130%;
+            margin-top: -50px;
+            border: none;
+        }
+
+        .player-details-box {
+            padding: 12px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .yt-player-title {
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.3;
+            color: #f1f1f1;
+        }
+
+        .yt-player-stats {
+            font-size: 12px;
+            color: #aaa;
+        }
+
+        .yt-channel-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-top: 1px solid #272727;
+            border-bottom: 1px solid #272727;
+            margin-top: 4px;
+        }
+
+        .yt-channel-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .yt-channel-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .yt-channel-name {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .yt-channel-subs {
+            font-size: 11px;
+            color: #aaa;
+        }
+
+        .subscribe-btn {
+            background-color: #ffffff;
+            color: #0f0f0f;
+            border: none;
+            padding: 7px 14px;
+            border-radius: 18px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .subscribe-btn.subscribed {
+            background-color: #272727;
+            color: #aaaaaa;
+        }
+
+        .yt-actions-row {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+        }
+
+        .yt-action-pill {
+            background-color: #272727;
+            color: #f1f1f1;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 18px;
+            font-size: 12px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .like-portion {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+        }
+
+        .like-portion.liked {
+            color: #3ea6ff;
+        }
+
+        .dislike-portion {
+            cursor: pointer;
+            color: #f1f1f1;
+        }
+
+        .yt-comments-box {
+            background-color: #272727;
+            border-radius: 12px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 4px;
+            cursor: pointer;
+        }
+
+        .yt-comments-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .yt-comment-preview {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: #ddd;
+        }
+
+        .yt-comment-preview img {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+        }
+
+        .comments-sheet-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 250;
+            display: none;
+            justify-content: flex-end;
+            flex-direction: column;
+        }
+
+        .comments-sheet-content {
+            background-color: #0f0f0f;
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+            height: 75%;
+            display: flex;
+            flex-direction: column;
+            border-top: 1px solid #272727;
+        }
+
+        .comments-sheet-header {
+            padding: 12px 16px;
+            border-bottom: 1px solid #272727;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .comments-header-title {
+            font-size: 16px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .comments-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .comment-item {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .comment-avatar-wrapper {
+            position: relative;
+        }
+
+        .comment-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .comment-heart-badge {
+            position: absolute;
+            bottom: -2px;
+            right: -2px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: #0f0f0f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .comment-heart-badge img {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .comment-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .comment-author-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            color: #aaa;
+        }
+
+        .comment-author-name {
+            color: #aaa;
+            font-weight: 500;
+        }
+
+        .comment-text {
+            font-size: 13px;
+            color: #f1f1f1;
+            line-height: 1.35;
+        }
+
+        .comment-actions-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-top: 4px;
+            font-size: 12px;
+            color: #aaa;
+        }
+
+        .comment-action-btn {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .creator-heart-btn {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .creator-heart-btn i.hearted {
+            color: #ff0000;
+        }
+
+        .creator-heart-btn .mini-creator-avatar {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            margin-left: -6px;
+            border: 1px solid #0f0f0f;
+        }
+
+        .modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: none;
+            justify-content: flex-end;
+            flex-direction: column;
+            z-index: 200;
+        }
+
+        .modal-content {
+            background-color: #212121;
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+            padding: 20px;
+            max-height: 85%;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .view-screen {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            padding: 0;
+        }
+
+        .view-screen.active {
+            display: flex;
+        }
+
+        .shorts-screen {
+            display: none;
+            flex-direction: column;
+            padding: 0;
+        }
+
+        .shorts-screen.active {
+            display: flex;
+        }
+
+        .you-tab-screen {
+            display: none;
+            flex-direction: column;
+            gap: 20px;
+            padding: 16px;
+        }
+
+        .you-tab-screen.active {
+            display: flex;
+        }
+
+        .you-user-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .you-user-avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .you-user-info h2 {
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .you-user-handle {
+            font-size: 13px;
+            color: #aaa;
+            margin-top: 2px;
+        }
+
+        .you-user-action {
+            font-size: 13px;
+            color: #3ea6ff;
+            margin-top: 4px;
+            cursor: pointer;
+        }
+
+        .you-chips-row {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+        }
+
+        .you-chips-row::-webkit-scrollbar {
+            display: none;
+        }
+
+        .you-chip-btn {
+            background-color: #272727;
+            color: #f1f1f1;
+            border: none;
+            padding: 7px 14px;
+            border-radius: 16px;
+            font-size: 13px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .you-section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .you-section-title {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .you-view-all {
+            border: 1px solid #3e3e3e;
+            background: none;
+            color: #f1f1f1;
+            padding: 5px 12px;
+            border-radius: 16px;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .you-empty-box {
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            padding: 16px;
+            color: #aaa;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .you-menu-list {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            margin-top: 6px;
+            padding-bottom: 20px;
+        }
+
+        .you-menu-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 15px;
+            font-weight: 400;
+            color: #f1f1f1;
+            cursor: pointer;
+        }
+
+        .you-menu-item i {
+            font-size: 18px;
+            width: 24px;
+            color: #f1f1f1;
+            text-align: center;
+        }
+
+        .bottom-nav {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 56px;
+            background-color: #0f0f0f;
+            border-top: 1px solid #272727;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 3px;
+            color: #aaa;
+            font-size: 10px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            flex: 1;
+        }
+
+        .nav-item i {
+            font-size: 18px;
+        }
+
+        .nav-item.active {
+            color: #ffffff;
+        }
+
+        .create-icon-wrapper {
+            width: 32px;
+            height: 32px;
+            border: 2px solid #ffffff;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .create-icon-wrapper i {
+            font-size: 16px;
+            color: #ffffff;
+        }
+
+        .user-nav-pic {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid #ffffff;
+        }
+
+        .toast {
+            position: absolute;
+            bottom: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ffffff;
+            color: #0f0f0f;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            display: none;
+            z-index: 300;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- Top Header -->
+        <header class="top-header" id="topHeader">
+            <div class="top-header-left">
+                <button class="icon-btn" id="backBtn" onclick="openChannel()" style="display: none;"><i class="fa-solid fa-arrow-left"></i></button>
+                <span id="headerTitle" style="font-weight: 700; font-size: 18px; display: none;">Analytics</span>
+            </div>
+            <div class="top-header-right">
+                <button class="icon-btn" onclick="showToast('Cast')"><i class="fa-solid fa-tv"></i></button>
+                <button class="icon-btn" onclick="showToast('Notifications')"><i class="fa-regular fa-bell"></i></button>
+                <button class="icon-btn" onclick="showToast('Search')"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <button class="icon-btn" onclick="showToast('Settings')"><i class="fa-solid fa-gear"></i></button>
+            </div>
+        </header>
+
+        <div class="toast" id="toast">Notification</div>
+
+        <main class="main-content">
+            <!-- MAIN CHANNEL PROFILE VIEW -->
+            <div id="channelView">
+                <div class="channel-profile-section">
+                    <div class="channel-info">
+                        <img src="https://i.ibb.co/JM9rnND/IMG-20261105-004315.jpg" alt="Supriya Bhandari Chettri" class="profile-pic">
+                        <div class="channel-details">
+                            <h1>Supriya Bhandari Chettri</h1>
+                            <div class="channel-meta-handle">@Kaanha__0</div>
+                            <div class="channel-meta-stats" id="channelVideoCount">115K subscribers • 28 videos</div>
+                        </div>
+                    </div>
+
+                    <div class="channel-bio" onclick="openAboutModal()">
+                        "Exploring the world with boundless curiosity, I'm a freedom-loving child spreading kindness and joy one <span class="more-link">...more</span>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn btn-secondary" id="openAnalyticsBtn" onclick="openAnalytics()">
+                            <i class="fa-solid fa-chart-simple"></i> Analytics
+                        </button>
+                        <button class="btn btn-secondary" onclick="showToast('Edit Channel')">
+                            <i class="fa-solid fa-pen"></i> Edit channel
+                        </button>
+                    </div>
+                </div>
+
+                <div class="content-tabs">
+                    <div class="tab-item" onclick="showToast('Home')">Home</div>
+                    <div class="tab-item active" id="tabVideos" onclick="openChannel()">Videos</div>
+                    <div class="tab-item" id="tabShorts" onclick="openShortsTab()">Shorts</div>
+                    <div class="tab-item" onclick="showToast('Posts')">Posts</div>
+                </div>
+
+                <div class="filter-chips" id="filterChips">
+                    <div class="chip active" id="chipLatest" onclick="sortVideos('latest')">Latest</div>
+                    <div class="chip" id="chipPopular" onclick="sortVideos('popular')">Popular</div>
+                    <div class="chip" id="chipOldest" onclick="sortVideos('oldest')">Oldest</div>
+                </div>
+
+                <!-- Video List -->
+                <div class="video-list" id="videoList"></div>
+            </div>
+
+            <!-- SHORTS TAB SCREEN -->
+            <div id="shortsView" class="shorts-screen">
+                <div class="shorts-grid" id="shortsGridContainer"></div>
+            </div>
+
+            <!-- ANALYTICS VIEW SCREEN -->
+            <div id="analyticsView" class="view-screen">
+                <div class="analytics-top-profile">
+                    <img src="https://i.ibb.co/JM9rnND/IMG-20261105-004315.jpg" alt="Supriya Bhandari Chettri">
+                    <h2>Supriya Bhandari Chettri</h2>
+                    <div>
+                        <span class="sub-count">115K</span> <span class="sub-label">Total subscribers</span>
+                    </div>
+                </div>
+
+                <div class="analytics-section-title">
+                    <span>Channel analytics</span>
+                    <span>Last 28 days</span>
+                </div>
+
+                <div class="analytics-metrics-grid">
+                    <div class="analytics-metric-box">
+                        <div class="m-title">Views</div>
+                        <div class="m-value">1.87M</div>
+                    </div>
+                    <div class="analytics-metric-box">
+                        <div class="m-title">Watch time (hours)</div>
+                        <div class="m-value">420.5</div>
+                    </div>
+                </div>
+
+                <div class="analytics-section-title" style="margin-top: 12px;">
+                    <span>Latest published content</span>
+                </div>
+
+                <div class="analytics-content-list" id="analyticsContentList"></div>
+            </div>
+
+            <!-- "YOU" TAB SCREEN -->
+            <div id="youTabScreen" class="you-tab-screen">
+                <div class="you-user-header">
+                    <img src="https://i.ibb.co/JM9rnND/IMG-20261105-004315.jpg" alt="Supriya Bhandari Chettri" class="you-user-avatar">
+                    <div class="you-user-info">
+                        <h2>Supriya Bhandari Chettri</h2>
+                        <div class="you-user-handle">@Kaanha__0</div>
+                        <div class="you-user-action" onclick="openChannel()">View channel <i class="fa-solid fa-chevron-right" style="font-size:10px;"></i></div>
+                    </div>
+                </div>
+
+                <div class="you-chips-row">
+                    <button class="you-chip-btn" onclick="showToast('Switch account')">
+                        <i class="fa-solid fa-user-gear"></i> Switch account
+                    </button>
+                    <button class="you-chip-btn" onclick="showToast('Google Account')">
+                        <i class="fa-brands fa-google"></i> Google Account
+                    </button>
+                    <button class="you-chip-btn" onclick="showToast('Incognito')">
+                        <i class="fa-solid fa-user-secret"></i> Turn on Incognito
+                    </button>
+                </div>
+
+                <div>
+                    <div class="you-section-header">
+                        <span class="you-section-title">History</span>
+                        <button class="you-view-all" onclick="showToast('History')">View all</button>
+                    </div>
+                    <div class="you-empty-box" style="margin-top:10px;">
+                        No watch history available
+                    </div>
+                </div>
+
+                <div>
+                    <div class="you-section-header">
+                        <span class="you-section-title">Playlists</span>
+                        <button class="you-view-all" onclick="showToast('Playlists')">View all</button>
+                    </div>
+                    <div class="you-empty-box" style="margin-top:10px;">
+                        No playlists created yet
+                    </div>
+                </div>
+
+                <div class="you-menu-list">
+                    <div class="you-menu-item" onclick="showToast('Your videos')">
+                        <i class="fa-solid fa-video"></i>
+                        <span>Your videos</span>
+                    </div>
+                    <div class="you-menu-item" onclick="showToast('Downloads')">
+                        <i class="fa-solid fa-download"></i>
+                        <span>Downloads</span>
+                    </div>
+                    <div class="you-menu-item" onclick="showToast('Your movies')">
+                        <i class="fa-solid fa-film"></i>
+                        <span>Your movies</span>
+                    </div>
+                    <div class="you-menu-item" onclick="showToast('Get YouTube Premium')">
+                        <i class="fa-brands fa-youtube" style="color:red;"></i>
+                        <span>Get YouTube Premium</span>
+                    </div>
+                    <div class="you-menu-item" onclick="showToast('Time watched')">
+                        <i class="fa-solid fa-chart-column"></i>
+                        <span>Time watched</span>
+                    </div>
+                    <div class="you-menu-item" onclick="showToast('Your data in YouTube')">
+                        <i class="fa-solid fa-user-shield"></i>
+                        <span>Your data in YouTube</span>
+                    </div>
+                    <div class="you-menu-item" onclick="showToast('Settings')">
+                        <i class="fa-solid fa-gear"></i>
+                        <span>Settings</span>
+                    </div>
+                    <div class="you-menu-item" onclick="showToast('Help and feedback')">
+                        <i class="fa-regular fa-circle-question"></i>
+                        <span>Help and feedback</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- VIDEO WATCH INTERFACE -->
+        <div class="player-modal-screen" id="youtubePlayerScreen">
+            <div class="player-video-box" id="ytVideoIframeBox"></div>
+            
+            <div class="player-details-box">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:8px;">
+                    <div class="yt-player-title" id="ytTitleText">Video Title Here</div>
+                    <button class="icon-btn" onclick="closePlayerScreen()" style="color:#aaa;"><i class="fa-solid fa-chevron-down"></i></button>
+                </div>
+                
+                <div class="yt-player-stats" id="ytStatsText">13K views</div>
+
+                <div class="yt-channel-row">
+                    <div class="yt-channel-left">
+                        <img src="https://i.ibb.co/JM9rnND/IMG-20261105-004315.jpg" alt="Channel" class="yt-channel-avatar">
+                        <div>
+                            <div class="yt-channel-name">Supriya Bhandari Chettri</div>
+                            <div class="yt-channel-subs">115K subscribers</div>
+                        </div>
+                    </div>
+                    <button class="subscribe-btn" id="subBtn" onclick="toggleSubscribe()">Subscribe</button>
+                </div>
+
+                <div class="yt-actions-row">
+                    <div class="yt-action-pill">
+                        <div class="like-portion" id="likePortion" onclick="toggleVideoLike()">
+                            <i class="fa-regular fa-thumbs-up" id="likeIcon"></i>
+                            <span id="likeCount">1.2K</span>
+                        </div>
+                        <span style="color:#555; margin:0 4px;">|</span>
+                        <div class="dislike-portion" onclick="showToast('Disliked')">
+                            <i class="fa-regular fa-thumbs-down"></i>
+                        </div>
+                    </div>
+
+                    <button class="yt-action-pill" onclick="showToast('Share link copied')">
+                        <i class="fa-solid fa-share"></i> Share
+                    </button>
+                    <button class="yt-action-pill" onclick="showToast('Saved to Offline Downloads')">
+                        <i class="fa-solid fa-download"></i> Download
+                    </button>
+                </div>
+
+                <div class="yt-comments-box" onclick="openCommentsSheet()">
+                    <div class="yt-comments-header">
+                        <span id="commentsCountHeader">Comments 70</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="yt-comment-preview">
+                        <img src="https://picsum.photos/100/100?random=1" alt="User">
+                        <span id="commentPreviewText" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Girls gang dammi cha dd subhuu ❤️ keep it up didi 🔥😍👍💪💪💪</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COMMENTS MODAL BOTTOM SHEET -->
+            <div class="comments-sheet-overlay" id="commentsSheetOverlay" onclick="closeCommentsSheet()">
+                <div class="comments-sheet-content" onclick="event.stopPropagation()">
+                    <div class="comments-sheet-header">
+                        <div class="comments-header-title">
+                            <span>Comments</span>
+                            <span id="commentsCountSheet" style="font-size:12px; color:#aaa; font-weight:400;">70</span>
+                        </div>
+                        <i class="fa-solid fa-xmark" style="cursor:pointer; font-size:18px;" onclick="closeCommentsSheet()"></i>
+                    </div>
+
+                    <div class="comments-list" id="commentsListContainer"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Modal -->
+        <div class="modal-overlay" id="aboutModal" onclick="closeAboutModal()">
+            <div class="modal-content" onclick="event.stopPropagation()">
+                <div class="modal-header">
+                    <span>About</span>
+                    <i class="fa-solid fa-xmark" style="cursor:pointer;" onclick="closeAboutModal()"></i>
+                </div>
+                <div style="font-size:14px; line-height:1.5; color:#eee;">
+                    "Exploring the world with boundless curiosity, I'm a freedom-loving child spreading kindness and joy wherever I go."
+                </div>
+                <hr style="border:0; border-top:1px solid #333;">
+                <div style="display:flex; flex-direction:column; gap:12px; font-size:14px;">
+                    <div><i class="fa-solid fa-globe" style="width:24px; color:#aaa;"></i> www.youtube.com/@Kaanha__0</div>
+                    <div><i class="fa-solid fa-users" style="width:24px; color:#aaa;"></i> 115,000 subscribers</div>
+                    <div><i class="fa-solid fa-video" style="width:24px; color:#aaa;"></i> 28 videos</div>
+                    <div><i class="fa-solid fa-eye" style="width:24px; color:#aaa;"></i> 12,450,890 views</div>
+                    <div><i class="fa-solid fa-circle-info" style="width:24px; color:#aaa;"></i> Joined Nov 12, 2021</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Nav Bar -->
+        <nav class="bottom-nav">
+            <button class="nav-item active" id="navHome" onclick="openChannel()">
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+            </button>
+            <button class="nav-item" id="navShorts" onclick="openShortsTab()">
+                <i class="fa-solid fa-bolt"></i>
+                <span>Shorts</span>
+            </button>
+            <button class="nav-item" onclick="showToast('Create')">
+                <div class="create-icon-wrapper">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+            </button>
+            <button class="nav-item" onclick="showToast('Subscriptions')">
+                <i class="fa-solid fa-layer-group"></i>
+                <span>Subscriptions</span>
+            </button>
+            <button class="nav-item" id="navYou" onclick="openYouTab()">
+                <img src="https://i.ibb.co/JM9rnND/IMG-20261105-004315.jpg" class="user-nav-pic" alt="You">
+                <span>You</span>
+            </button>
+        </nav>
+    </div>
+
+    <script>
+        const creatorAvatar = "https://i.ibb.co/JM9rnND/IMG-20261105-004315.jpg";
+
+        // ALL 28 LONG VIDEOS WITH EXACT MATCHED TITLES FROM SCREENSHOTS
+        const videos = [
+            { id: 'v1', title: 'Day 1 & 2 Kathmandu to Pokhara with Girls || #royalenfield ...', views: '14K', viewVal: 14000, time: '5d ago', order: 1, duration: '11:26', hasMusicIcon: false, thumb: 'https://i.ibb.co/wFZPbRm6/IMG-20261105-182415.jpg', driveFileId: '1TkS2T2CmVf7C2TQkTNDtdj8jwOyq6ASb', likes: '1.7K', commentsCount: 45 },
+            { id: 'v2', title: 'FUN AND PRODUCTIVE DAY WITH KAANHA ||', views: '56K', viewVal: 56000, time: '3w ago', order: 2, duration: '16:06', hasMusicIcon: false, thumb: 'https://i.ibb.co/JFc8kNj5/IMG-20261105-182513.jpg', driveFileId: '14a7m_tFT02pyvNSFYL1lOGn8vqk6gzuw', likes: '3.2K', commentsCount: 89 },
+            { id: 'v3', title: 'You Missed Me, Didn’t You? 😏', views: '37K', viewVal: 37000, time: '2mo ago', order: 3, duration: '8:05', hasMusicIcon: false, thumb: 'https://i.ibb.co/5XWsWdyR/IMG-20261105-182655.jpg', driveFileId: '18wLvKhowhpPTkmy9HAgcCBnDTjfl-Tj-', likes: '1.9K', commentsCount: 400 },
+            { id: 'v4', title: '2 years ago, and i really don’t see that things on my eyes a...', views: '19K', viewVal: 19000, time: '2mo ago', order: 4, duration: '0:14', hasMusicIcon: true, thumb: 'https://i.ibb.co/bMkFxnj4/IMG-20261105-182740.jpg', driveFileId: '1TkS2T2CmVf7C2TQkTNDtdj8jwOyq6ASb', likes: '1K', commentsCount: 70 },
+            { id: 'v5', title: 'NEW HAIR? A Day struggling to find a apartment in kath...', views: '36K', viewVal: 36000, time: '3mo ago', order: 5, duration: '18:44', hasMusicIcon: false, thumb: 'https://i.ibb.co/jmJbFrD/IMG-20261105-182824.jpg', driveFileId: '14a7m_tFT02pyvNSFYL1lOGn8vqk6gzuw', likes: '1.7K', commentsCount: 70 },
+            { id: 'v6', title: 'YEAH WHY NOT TO YAP WHEN I CAN WHATEVER!!', views: '29K', viewVal: 29000, time: '4mo ago', order: 6, duration: '8:13', hasMusicIcon: false, thumb: 'https://i.ibb.co/yF39Kq2D/IMG-20261105-134041.jpg', driveFileId: '1TkS2T2CmVf7C2TQkTNDtdj8jwOyq6ASb', likes: '1.7K', commentsCount: 45 },
+            { id: 'v7', title: 'Nearly Crashed My bike in rain || Episode 1 ||', views: '80K', viewVal: 80000, time: '4mo ago', order: 7, duration: '17:41', hasMusicIcon: false, thumb: 'https://i.ibb.co/3mqgS3Sb/IMG-20261105-133621.jpg', driveFileId: '14a7m_tFT02pyvNSFYL1lOGn8vqk6gzuw', likes: '3.2K', commentsCount: 89 },
+            { id: 'v8', title: '❤️ | KAANHA', views: '22K', viewVal: 22000, time: '4mo ago', order: 8, duration: '5:50', hasMusicIcon: false, thumb: 'https://i.ibb.co/SkqsMNr/IMG-20261105-133655.jpg', driveFileId: '18wLvKhowhpPTkmy9HAgcCBnDTjfl-Tj-', likes: '1.7K', commentsCount: 34 },
+            { id: 'v9', title: 'I don’t know how to react chat! Kaanha__0', views: '34K', viewVal: 34000, time: '4mo ago', order: 9, duration: '1:44', hasMusicIcon: false, thumb: 'https://i.ibb.co/zhZDPmj6/IMG-20261105-133812.jpg', driveFileId: '1TkS2T2CmVf7C2TQkTNDtdj8jwOyq6ASb', likes: '2.3K', commentsCount: 150 },
+            { id: 'v10', title: 'Alice collector skin event and gameplay', views: '11K', viewVal: 11000, time: '5mo ago', order: 10, duration: '1:02', hasMusicIcon: false, thumb: 'https://i.ibb.co/63s5sjX/IMG-20261105-133848.jpg', driveFileId: '14a7m_tFT02pyvNSFYL1lOGn8vqk6gzuw', likes: '580', commentsCount: 110 },
+            { id: 'v11', title: 'Low spice tolerance Yapping ||', views: '34K', viewVal: 34000, time: '7mo ago', order: 11, duration: '11:13', hasMusicIcon: false, thumb: 'https://i.ibb.co/8DDBzb11/IMG-20261105-133945.jpg', driveFileId: '18wLvKhowhpPTkmy9HAgcCBnDTjfl-Tj-', likes: '1.8K', commentsCount: 62 },
+            { id: 'v12', title: 'Goodbye to my Teens || BLESSED', views: '33K', viewVal: 33000, time: '8mo ago', order: 12, duration: '12:27', hasMusicIcon: false, thumb: 'https://i.ibb.co/4wCR48mG/IMG-20261105-134948.jpg', driveFileId: '1TkS2T2CmVf7C2TQkTNDtdj8jwOyq6ASb', likes: '1.6K', commentsCount: 210 },
+            { id: 'v13', title: 'Remembered that i can yap in my youtube 😊', views: '90K', viewVal: 90000, time: '1y ago', order: 13, duration: '15:54', hasMusicIcon: false, thumb: 'https://i.ibb.co/mrksb3m2/IMG-20261105-135024.jpg', driveFileId: '14a7m_tFT02pyvNSFYL1lOGn8vqk6gzuw', likes: '1.4K', commentsCount: 95 },
+            { id: 'v14', title: 'My other personality thinks I need help || Watch This without...', views: '75K', viewVal: 75000, time: '1y ago', order: 14, duration: '9:26', hasMusicIcon: false, thumb: 'https://i.ibb.co/pr2BSdcw/IMG-20261105-135106.jpg', driveFileId: '18wLvKhowhpPTkmy9HAgcCBnDTjfl-Tj-', likes: '3.3K', commentsCount: 310 },
+            { id: 'v15', title: 'Did I got engaged? Bartamanda vlog! || KAANHA ||', views: '78K', viewVal: 78000, time: '1y ago', order: 15, duration: '9:21', hasMusicIcon: false, thumb: 'https://i.ibb.co/QxFcxPh/IMG-20261105-135251.jpg', driveFileId: '1TkS2T2CmVf7C2TQkTNDtdj8jwOyq6ASb', likes: '4K', commentsCount: 140 },
+            { id: 'v16', title: 'When life gets hard “RUN WITH YOUR FRIENDS TO P...', views: '36K', viewVal: 36000, time: '1y ago', order: 16, duration: '12:53', hasMusicIcon: false, thumb: 'https://i.ibb.co/qMcv4Sw5/IMG-20261105-135337.jpg', driveFileId: '14a7m_tFT02pyvNSFYL1lOGn8vqk6gzuw', likes: '1.6K', commentsCount: 48 },
+            { id: 'v17', title: 'THIS CITY IS FUN 24/7 😭 Can’t get over', views: '22K', viewVal: 22000, time: '1y ago', order: 17, duration: '13:20', hasMusicIcon: false, thumb: 'https://i.ibb.co/DfrsnfWR/IMG-20261105-135428.jpg', driveFileId: '18wLvKhowhpPTkmy9HAgcCBnDTjfl-Tj-', likes: '1.1K', commentsCount: 380 },
+            { id: 'v18', title: 'MUSTANG NEPAL WITH FRIENDS ||', views: '30K', viewVal: 30000, time: '1y ago', order: 18, duration: '11:16', hasMusicIcon: false, thumb: 'https://i.ibb.co/qYng0TLt/IMG-20261105-135519.jpg', driveFileId: '1TkS2T2CmVf7C2TQkTNDtdj8jwOyq6ASb', likes: '1.6K', commentsCount: 125 },
+            { id: 'v19', title: 'Day 1 || RAN AWAY TO POKHARA WITH FRIENDS || 🇳🇵', views: '17K', viewVal: 17000, time: '1y ago', order: 19, duration: '6:10', hasMusicIcon: false, thumb: 'https://i.ibb.co/KpKWrbzs/IMG-20261105-135941.jpg', driveFileId: '14a7m_tFT02pyvNSFYL1lOGn8vqk6gzuw', likes: '7.6K', commentsCount: 88 },
+            { id: 'v20', title: 'Last Braincell when I’m Home Alone 😌', views: '146K', viewVal: 146000, time: '1y ago', order: 20, duration: '11:41', hasMusicIcon: false, thumb: 'https://i.ibb.co/kV8m19fH/IMG-20261105-140108.jpg', driveFileId: '18wLvKhowhpPTkmy9HAgcCBnDTjfl-Tj-', likes: '2.9K', commentsCount: 190 },
+            { id: 'v21', title: 'TYPES OF MEN YOU SHOULD STAY AWAY FROM || GURL RUN ...', views: '57K', viewVal: 57000, time: '1y ago', order: 21, duration: '10:36', hasMusicIcon: false, thumb: 'https://i.ibb.co/wZgPNjmg/IMG-20261105-140300.jpg', driveFileId: '1TkS2T2CmVf7C2TQkTNDtdj8jwOyq6ASb', likes: '19K', commentsCount: 850 },
+            { id: 'v22', title: 'SEJAL !! ANOTHER LEVEL OF DARK HUMOUR😭|| My FIR...', views: '495K', viewVal: 495000, time: '1y ago', order: 22, duration: '12:08', hasMusicIcon: false, thumb: 'https://i.ibb.co/7JgH7yxb/IMG-20261105-140343.jpg', driveFileId: '14a7m_tFT02pyvNSFYL1lOGn8vqk6gzuw', likes: '2.3K', commentsCount: 75 },
+            { id: 'v23', title: 'Sabai bidesh, Ma Nepal mai 😭 || Dashain || Dashera || ...', views: '53K', viewVal: 53000, time: '2y ago', order: 23, duration: '14:02', hasMusicIcon: false, thumb: 'https://i.ibb.co/kVzbBS97/IMG-20261105-140546.jpg', driveFileId: '18wLvKhowhpPTkmy9HAgcCBnDTjfl-Tj-', likes: '3.1K', commentsCount: 260 },
+            { id: 'v24', title: 'Don’t waste your Money/Skin following trends || SupriyaBha...', views: '77K', viewVal: 77000, time: '2y ago', order: 24, duration: '16:32', hasMusicIcon: false, thumb: 'https://i.ibb.co/Y4bKDTrn/IMG-20261105-140702.jpg', driveFileId: '1TkS2T2CmVf7C2TQkTNDtdj8jwOyq6ASb', likes: '2.4K', commentsCount: 52 },
+            { id: 'v25', title: 'I’m a Boring Person Actually 🇳🇵', views: '51K', viewVal: 51000, time: '2y ago', order: 25, duration: '8:58', hasMusicIcon: false, thumb: 'https://i.ibb.co/MxkNwnkk/IMG-20261105-140811.jpg', driveFileId: '14a7m_tFT02pyvNSFYL1lOGn8vqk6gzuw', likes: '300', commentsCount: 40 },
+            { id: 'v26', title: 'Choto mitho Ramailo 📍Thamel Kathmandu |', views: '18K', viewVal: 18000, time: '2y ago', order: 26, duration: '7:21', hasMusicIcon: false, thumb: 'https://i.ibb.co/dwmHJBnX/IMG-20261105-140906.jpg', driveFileId: '18wLvKhowhpPTkmy9HAgcCBnDTjfl-Tj-', likes: '2.1K', commentsCount: 50 },
+            { id: 'v27', title: 'JWELERY REVIEW OR UPDATE 🦢❤️🇳🇵', views: '49K', viewVal: 49000, time: '2y ago', order: 27, duration: '9:11', hasMusicIcon: false, thumb: 'https://i.ibb.co/q3rWt7fH/IMG-20261105-140951.jpg', driveFileId: '1TkS2T2CmVf7C2TQkTNDtdj8jwOyq6ASb', likes: '3.4K', commentsCount: 60 },
+            { id: 'v28', title: 'Ok this is kinda lonely, But I’m happy! 😂❤️', views: '66K', viewVal: 66000, time: '2y ago', order: 28, duration: '19:24', hasMusicIcon: false, thumb: 'https://i.ibb.co/6cNCKQLT/IMG-20261105-141323.jpg', driveFileId: '14a7m_tFT02pyvNSFYL1lOGn8vqk6gzuw', likes: '2.3K', commentsCount: 70 }
+        ];
+
+        // SHORTS LIST WITH EXACT UPDATED LIKES AND COMMENTS
+        const shortsList = [
+            { id: 's1', title: 'YouTube Short #1', views: '184K', thumb: 'https://i.ibb.co/dwJQm1Ck/IMG-20261105-224213.jpg', driveFileId: '1TkS2T2CmVf7C2TQkTNDtdj8jwOyq6ASb', likes: '5.9K', commentsCount: 188, time: 'Short' },
+            { id: 's2', title: 'YouTube Short #2', views: '140K', thumb: 'https://i.ibb.co/Kx995JPS/IMG-20261105-224301.jpg', driveFileId: '14a7m_tFT02pyvNSFYL1lOGn8vqk6gzuw', likes: '7.5K', commentsCount: 241, time: 'Short' },
+            { id: 's3', title: 'YouTube Short #3', views: '209K', thumb: 'https://i.ibb.co/tTqCNnYM/IMG-20261105-224333.jpg', driveFileId: '18wLvKhowhpPTkmy9HAgcCBnDTjfl-Tj-', likes: '6.8K', commentsCount: 151, time: 'Short' },
+            { id: 's4', title: 'YouTube Short #4', views: '162K', thumb: 'https://i.ibb.co/RT26jhMp/IMG-20261105-224556.jpg', driveFileId: '1TkS2T2CmVf7C2TQkTNDtdj8jwOyq6ASb', likes: '6.7K', commentsCount: 233, time: 'Short' },
+            { id: 's5', title: 'YouTube Short #5', views: '97K', thumb: 'https://i.ibb.co/kVKTk7zJ/IMG-20261105-224628.jpg', driveFileId: '14a7m_tFT02pyvNSFYL1lOGn8vqk6gzuw', likes: '7.8K', commentsCount: 262, time: 'Short' },
+            { id: 's6', title: 'YouTube Short #6', views: '113K', thumb: 'https://i.ibb.co/d0cXz1Nj/IMG-20261105-224658.jpg', driveFileId: '18wLvKhowhpPTkmy9HAgcCBnDTjfl-Tj-', likes: '54K', commentsCount: 635, time: 'Short' },
+            { id: 's7', title: 'YouTube Short #7', views: '134K', thumb: 'https://i.ibb.co/5hwb6C5s/IMG-20261105-224756.jpg', driveFileId: '1TkS2T2CmVf7C2TQkTNDtdj8jwOyq6ASb', likes: '12K', commentsCount: 367, time: 'Short' },
+            { id: 's8', title: 'YouTube Short #8', views: '489K', thumb: 'https://i.ibb.co/m5JPsryB/IMG-20261105-224818.jpg', driveFileId: '14a7m_tFT02pyvNSFYL1lOGn8vqk6gzuw', likes: '7.7K', commentsCount: 186, time: 'Short' },
+            { id: 's9', title: 'YouTube Short #9', views: '128K', thumb: 'https://i.ibb.co/vxCRHCrb/IMG-20261105-224848.jpg', driveFileId: '18wLvKhowhpPTkmy9HAgcCBnDTjfl-Tj-', likes: '9.8K', commentsCount: 238, time: 'Short' },
+            { id: 's10', title: 'YouTube Short #10', views: '95K', thumb: 'https://i.ibb.co/35h7Btjh/IMG-20261105-224908.jpg', driveFileId: '1TkS2T2CmVf7C2TQkTNDtdj8jwOyq6ASb', likes: '9.4K', commentsCount: 220, time: 'Short' },
+            { id: 's11', title: 'YouTube Short #11', views: '76K', thumb: 'https://i.ibb.co/d4LGsTT0/IMG-20261105-224949.jpg', driveFileId: '14a7m_tFT02pyvNSFYL1lOGn8vqk6gzuw', likes: '4.3K', commentsCount: 94, time: 'Short' },
+            { id: 's12', title: 'YouTube Short #12', views: '110K', thumb: 'https://i.ibb.co/qLCcMH5b/IMG-20261105-225025.jpg', driveFileId: '18wLvKhowhpPTkmy9HAgcCBnDTjfl-Tj-', likes: '4.8K', commentsCount: 65, time: 'Short' },
+            { id: 's13', title: 'YouTube Short #13', views: '88K', thumb: 'https://i.ibb.co/sd5K1BFQ/IMG-20261105-225103.jpg', driveFileId: '1TkS2T2CmVf7C2TQkTNDtdj8jwOyq6ASb', likes: '7.7K', commentsCount: 246, time: 'Short' },
+            { id: 's14', title: 'YouTube Short #14', views: '92K', thumb: 'https://i.ibb.co/C3wYdLVR/IMG-20261105-225132.jpg', driveFileId: '14a7m_tFT02pyvNSFYL1lOGn8vqk6gzuw', likes: '18K', commentsCount: 330, time: 'Short' },
+            { id: 's15', title: 'YouTube Short #15', views: '145K', thumb: 'https://i.ibb.co/qTTmpnt/IMG-20261105-225202.jpg', driveFileId: '18wLvKhowhpPTkmy9HAgcCBnDTjfl-Tj-', likes: '6K', commentsCount: 129, time: 'Short' },
+            { id: 's16', title: 'YouTube Short #16', views: '67K', thumb: 'https://i.ibb.co/LDbH643S/IMG-20261105-225328.jpg', driveFileId: '1TkS2T2CmVf7C2TQkTNDtdj8jwOyq6ASb', likes: '4.2K', commentsCount: 97, time: 'Short' },
+            { id: 's17', title: 'YouTube Short #17', views: '120K', thumb: 'https://i.ibb.co/XfSb7NVR/IMG-20261105-225355.jpg', driveFileId: '14a7m_tFT02pyvNSFYL1lOGn8vqk6gzuw', likes: '4.8K', commentsCount: 119, time: 'Short' },
+            { id: 's18', title: 'YouTube Short #18', views: '99K', thumb: 'https://i.ibb.co/Zp4f5p60/IMG-20261105-225421.jpg', driveFileId: '18wLvKhowhpPTkmy9HAgcCBnDTjfl-Tj-', likes: '4K', commentsCount: 166, time: 'Short' },
+            { id: 's19', title: 'YouTube Short #19', views: '155K', thumb: 'https://i.ibb.co/8GdhjSQ/IMG-20261105-225458.jpg', driveFileId: '1TkS2T2CmVf7C2TQkTNDtdj8jwOyq6ASb', likes: '6.9K', commentsCount: 317, time: 'Short' },
+            { id: 's20', title: 'YouTube Short #20', views: '84K', thumb: 'https://i.ibb.co/Z1xztrwD/IMG-20261105-225528.jpg', driveFileId: '14a7m_tFT02pyvNSFYL1lOGn8vqk6gzuw', likes: '9.2K', commentsCount: 280, time: 'Short' },
+            { id: 's21', title: 'YouTube Short #21', views: '130K', thumb: 'https://i.ibb.co/Y487m8Qb/IMG-20261105-225555.jpg', driveFileId: '18wLvKhowhpPTkmy9HAgcCBnDTjfl-Tj-', likes: '6.5K', commentsCount: 213, time: 'Short' },
+            { id: 's22', title: 'YouTube Short #22', views: '72K', thumb: 'https://i.ibb.co/mFG3F1SR/IMG-20261105-225623.jpg', driveFileId: '1TkS2T2CmVf7C2TQkTNDtdj8jwOyq6ASb', likes: '15K', commentsCount: 492, time: 'Short' },
+            { id: 's23', title: 'YouTube Short #23', views: '165K', thumb: 'https://i.ibb.co/XkfvvrZY/IMG-20261105-225646.jpg', driveFileId: '14a7m_tFT02pyvNSFYL1lOGn8vqk6gzuw', likes: '19K', commentsCount: 389, time: 'Short' },
+            { id: 's24', title: 'YouTube Short #24', views: '91K', thumb: 'https://i.ibb.co/qY1jyZ56/IMG-20261105-225715.jpg', driveFileId: '18wLvKhowhpPTkmy9HAgcCBnDTjfl-Tj-', likes: '10K', commentsCount: 263, time: 'Short' },
+            { id: 's25', title: 'YouTube Short #25', views: '115K', thumb: 'https://i.ibb.co/VWWmfhZR/IMG-20261105-225755.jpg', driveFileId: '1TkS2T2CmVf7C2TQkTNDtdj8jwOyq6ASb', likes: '7.5K', commentsCount: 300, time: 'Short' },
+            { id: 's26', title: 'YouTube Short #26', views: '102K', thumb: 'https://i.ibb.co/Sg6qZnP/IMG-20261105-225823.jpg', driveFileId: '14a7m_tFT02pyvNSFYL1lOGn8vqk6gzuw', likes: '7.4K', commentsCount: 240, time: 'Short' },
+            { id: 's27', title: 'YouTube Short #27', views: '178K', thumb: 'https://i.ibb.co/BH08Ff0w/IMG-20261105-225848.jpg', driveFileId: '18wLvKhowhpPTkmy9HAgcCBnDTjfl-Tj-', likes: '12K', commentsCount: 290, time: 'Short' },
+            { id: 's28', title: 'YouTube Short #28', views: '89K', thumb: 'https://i.ibb.co/Z1Br6y3v/IMG-20261105-225906.jpg', driveFileId: '1TkS2T2CmVf7C2TQkTNDtdj8jwOyq6ASb', likes: '9.4K', commentsCount: 190, time: 'Short' },
+            { id: 's29', title: 'YouTube Short #29', views: '142K', thumb: 'https://i.ibb.co/ycTvb15L/IMG-20261105-225941.jpg', driveFileId: '14a7m_tFT02pyvNSFYL1lOGn8vqk6gzuw', likes: '5.1K', commentsCount: 188, time: 'Short' },
+            { id: 's30', title: 'YouTube Short #30', views: '96K', thumb: 'https://i.ibb.co/C51n0TRZ/IMG-20261105-230008.jpg', driveFileId: '18wLvKhowhpPTkmy9HAgcCBnDTjfl-Tj-', likes: '8.1K', commentsCount: 330, time: 'Short' },
+            { id: 's31', title: 'YouTube Short #31', views: '150K', thumb: 'https://i.ibb.co/qL7mR4fb/IMG-20261105-230044.jpg', driveFileId: '1TkS2T2CmVf7C2TQkTNDtdj8jwOyq6ASb', likes: '14K', commentsCount: 361, time: 'Short' },
+            { id: 's32', title: 'YouTube Short #32', views: '112K', thumb: 'https://i.ibb.co/4wpfK1fy/IMG-20261105-230115.jpg', driveFileId: '14a7m_tFT02pyvNSFYL1lOGn8vqk6gzuw', likes: '20K', commentsCount: 230, time: 'Short' },
+            { id: 's33', title: 'YouTube Short #33', views: '135K', thumb: 'https://i.ibb.co/mVn5g6xV/IMG-20261105-230134.jpg', driveFileId: '18wLvKhowhpPTkmy9HAgcCBnDTjfl-Tj-', likes: '15K', commentsCount: 280, time: 'Short' },
+            { id: 's34', title: 'YouTube Short #34', views: '81K', thumb: 'https://i.ibb.co/4n4Lwtvq/IMG-20261105-230201.jpg', driveFileId: '1TkS2T2CmVf7C2TQkTNDtdj8jwOyq6ASb', likes: '7.5K', commentsCount: 270, time: 'Short' },
+            { id: 's35', title: 'YouTube Short #35', views: '190K', thumb: 'https://i.ibb.co/7xBHbBG9/IMG-20261105-230233.jpg', driveFileId: '14a7m_tFT02pyvNSFYL1lOGn8vqk6gzuw', likes: '7.9K', commentsCount: 172, time: 'Short' },
+            { id: 's36', title: 'YouTube Short #36', views: '94K', thumb: 'https://i.ibb.co/WNS1y01K/IMG-20261105-230304.jpg', driveFileId: '18wLvKhowhpPTkmy9HAgcCBnDTjfl-Tj-', likes: '2.6K', commentsCount: 112, time: 'Short' },
+            { id: 's37', title: 'YouTube Short #37', views: '125K', thumb: 'https://i.ibb.co/7tT6Bk0q/IMG-20261105-230354.jpg', driveFileId: '1TkS2T2CmVf7C2TQkTNDtdj8jwOyq6ASb', likes: '8K', commentsCount: 260, time: 'Short' },
+            { id: 's38', title: 'YouTube Short #38', views: '105K', thumb: 'https://i.ibb.co/LzppQNyQ/IMG-20261105-230417.jpg', driveFileId: '14a7m_tFT02pyvNSFYL1lOGn8vqk6gzuw', likes: '4.6K', commentsCount: 87, time: 'Short' },
+            { id: 's39', title: 'YouTube Short #39', views: '160K', thumb: 'https://i.ibb.co/tThsLqxR/IMG-20261105-230443.jpg', driveFileId: '18wLvKhowhpPTkmy9HAgcCBnDTjfl-Tj-', likes: '4.7K', commentsCount: 121, time: 'Short' },
+            { id: 's40', title: 'YouTube Short #40', views: '87K', thumb: 'https://i.ibb.co/7JsdQNG5/IMG-20261105-230507.jpg', driveFileId: '1TkS2T2CmVf7C2TQkTNDtdj8jwOyq6ASb', likes: '4K', commentsCount: 230, time: 'Short' },
+            { id: 's41', title: 'YouTube Short #41', views: '148K', thumb: 'https://i.ibb.co/Q3zwpjBz/IMG-20261105-230554.jpg', driveFileId: '14a7m_tFT02pyvNSFYL1lOGn8vqk6gzuw', likes: '16K', commentsCount: 346, time: 'Short' },
+            { id: 's42', title: 'YouTube Short #42', views: '93K', thumb: 'https://i.ibb.co/xKpny8pY/IMG-20261105-230713.jpg', driveFileId: '18wLvKhowhpPTkmy9HAgcCBnDTjfl-Tj-', likes: '9K', commentsCount: 193, time: 'Short' },
+            { id: 's43', title: 'YouTube Short #43', views: '138K', thumb: 'https://i.ibb.co/gZFnFsGp/IMG-20261105-230756.jpg', driveFileId: '1TkS2T2CmVf7C2TQkTNDtdj8jwOyq6ASb', likes: '13K', commentsCount: 248, time: 'Short' },
+            { id: 's44', title: 'YouTube Short #44', views: '79K', thumb: 'https://i.ibb.co/DP7nwDF2/IMG-20261105-230825.jpg', driveFileId: '14a7m_tFT02pyvNSFYL1lOGn8vqk6gzuw', likes: '18K', commentsCount: 400, time: 'Short' },
+            { id: 's45', title: 'YouTube Short #45', views: '172K', thumb: 'https://i.ibb.co/mFhyd75S/IMG-20261105-230847.jpg', driveFileId: '18wLvKhowhpPTkmy9HAgcCBnDTjfl-Tj-', likes: '22K', commentsCount: 443, time: 'Short' },
+            { id: 's46', title: 'YouTube Short #46', views: '98K', thumb: 'https://i.ibb.co/BHL6FS8V/IMG-20261105-230914.jpg', driveFileId: '1TkS2T2CmVf7C2TQkTNDtdj8jwOyq6ASb', likes: '8.6K', commentsCount: 147, time: 'Short' },
+            { id: 's47', title: 'YouTube Short #47', views: '158K', thumb: 'https://i.ibb.co/1wqTFxB/IMG-20261105-230937.jpg', driveFileId: '14a7m_tFT02pyvNSFYL1lOGn8vqk6gzuw', likes: '21K', commentsCount: 366, time: 'Short' }
+        ];
+
+        const commentsData = [
+            { id: 1, author: "@Sikshabhandari98", time: "2 days ago", text: "Girls gang dammi cha dd subhuu ❤️ keep it up didi 🔥😍👍💪💪💪", likes: 1, hasHeart: true, avatar: "https://picsum.photos/100/100?random=1" },
+            { id: 2, author: "@bhojrajkarki2026", time: "2 days ago", text: "Nice video kaanha 🥰 stay blessed 🤗 keep growing 💗✨", likes: 1, hasHeart: true, avatar: "https://picsum.photos/100/100?random=2" },
+            { id: 3, author: "@swoorupachaudhary180", time: "3 days ago", text: "Aww super cool and energetic gang didi 💖 lot's of love n blessings to you all 💕 keep shining 😊", likes: 1, hasHeart: true, avatar: "https://picsum.photos/100/100?random=3" },
+            { id: 4, author: "@user-sy8vj2qs9s", time: "3 days ago", text: "Dherai din pachi video aayo didi 🥰 lot's of love ❤️ Keep uploading vlogs 😊", likes: 1, hasHeart: true, avatar: "https://picsum.photos/100/100?random=4" },
+            { id: 5, author: "@AayushaChettri-r6p", time: "3 days ago", text: "Didi tapai ko smile ani energetic vibe le din nai ramro banaucha ❤️✨", likes: 1, hasHeart: true, avatar: "https://picsum.photos/100/100?random=5" }
+        ];
+
+        let isSubscribed = false;
+        let isLiked = false;
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.innerText = msg;
+            toast.style.display = 'block';
+            setTimeout(() => { toast.style.display = 'none'; }, 2000);
+        }
+
+        function toggleSubscribe() {
+            const btn = document.getElementById('subBtn');
+            isSubscribed = !isSubscribed;
+            if (isSubscribed) {
+                btn.innerText = "Subscribed";
+                btn.classList.add('subscribed');
+                showToast("Subscribed to channel");
+            } else {
+                btn.innerText = "Subscribe";
+                btn.classList.remove('subscribed');
+                showToast("Unsubscribed from channel");
+            }
+        }
+
+        function toggleVideoLike() {
+            const portion = document.getElementById('likePortion');
+            const icon = document.getElementById('likeIcon');
+            isLiked = !isLiked;
+            if (isLiked) {
+                portion.classList.add('liked');
+                icon.className = 'fa-solid fa-thumbs-up';
+                showToast("Liked video");
+            } else {
+                portion.classList.remove('liked');
+                icon.className = 'fa-regular fa-thumbs-up';
+                showToast("Removed like");
+            }
+        }
+
+        function renderComments() {
+            const container = document.getElementById('commentsListContainer');
+            container.innerHTML = '';
+            commentsData.forEach((c) => {
+                const div = document.createElement('div');
+                div.className = 'comment-item';
+                div.innerHTML = `
+                    <div class="comment-avatar-wrapper">
+                        <img src="${c.avatar}" class="comment-avatar" alt="${c.author}">
+                        ${c.hasHeart ? `
+                            <div class="comment-heart-badge">
+                                <img src="${creatorAvatar}" alt="Creator Heart">
+                            </div>
+                        ` : ''}
+                    </div>
+                    <div class="comment-body">
+                        <div class="comment-author-row">
+                            <span class="comment-author-name">${c.author}</span>
+                            <span>• ${c.time}</span>
+                        </div>
+                        <div class="comment-text">${c.text}</div>
+                        <div class="comment-actions-row">
+                            <div class="comment-action-btn">
+                                <i class="fa-regular fa-thumbs-up"></i>
+                                <span>${c.likes > 0 ? c.likes : ''}</span>
+                            </div>
+                            <div class="comment-action-btn">
+                                <i class="fa-regular fa-thumbs-down"></i>
+                            </div>
+                            <div class="creator-heart-btn">
+                                <i class="fa-solid fa-heart ${c.hasHeart ? 'hearted' : ''}"></i>
+                                ${c.hasHeart ? `<img src="${creatorAvatar}" class="mini-creator-avatar" alt="Creator">` : ''}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function openCommentsSheet() {
+            document.getElementById('commentsSheetOverlay').style.display = 'flex';
+        }
+
+        function closeCommentsSheet() {
+            document.getElementById('commentsSheetOverlay').style.display = 'none';
+        }
+
+        function playVideo(v) {
+            if (!v.driveFileId) {
+                showToast(`Drive File ID missing for this item`);
+                return;
+            }
+            document.getElementById('ytTitleText').innerText = v.title || "YouTube Short Video";
+            document.getElementById('ytStatsText').innerText = `${v.views || '100K'} views`;
+            document.getElementById('likeCount').innerText = v.likes || '1.2K';
+            document.getElementById('commentsCountHeader').innerText = `Comments ${v.commentsCount || 45}`;
+            document.getElementById('commentsCountSheet').innerText = v.commentsCount || 45;
+            
+            const playerBox = document.getElementById('ytVideoIframeBox');
+            playerBox.innerHTML = `
+                <iframe src="https://drive.google.com/file/d/${v.driveFileId}/preview" allow="autoplay" allowfullscreen></iframe>
+            `;
+            
+            document.getElementById('youtubePlayerScreen').style.display = 'flex';
+        }
+
+        function closePlayerScreen() {
+            document.getElementById('youtubePlayerScreen').style.display = 'none';
+            document.getElementById('ytVideoIframeBox').innerHTML = '';
+            closeCommentsSheet();
+        }
+
+        function renderVideos(list) {
+            const container = document.getElementById('videoList');
+            container.innerHTML = '';
+            list.forEach(v => {
+                const card = document.createElement('div');
+                card.className = 'video-card';
+                card.onclick = () => playVideo(v);
+                card.innerHTML = `
+                    <div class="thumbnail-wrapper">
+                        <img src="${v.thumb}" alt="${v.title}">
+                        <span class="duration-badge">
+                            ${v.hasMusicIcon ? '<i class="fa-solid fa-music" style="font-size:9px;"></i>' : ''}
+                            ${v.duration}
+                        </span>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">${v.title}</div>
+                        <div class="video-stats">${v.views} • ${v.time}</div>
+                    </div>
+                    <button class="icon-btn" onclick="event.stopPropagation(); showToast('Options')" style="color:#aaa;">
+                        <i class="fa-solid fa-ellipsis-vertical" style="font-size:14px;"></i>
+                    </button>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // RENDER SHORTS GRID
+        function renderShortsGrid() {
+            const container = document.getElementById('shortsGridContainer');
+            container.innerHTML = '';
+            shortsList.forEach(s => {
+                const card = document.createElement('div');
+                card.className = 'short-card';
+                card.onclick = () => playVideo(s);
+                card.innerHTML = `
+                    <img src="${s.thumb}" alt="Short">
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // RENDER ANALYTICS CONTENT (VIDEOS + SHORTS COMBINED)
+        function renderAnalyticsContent() {
+            const container = document.getElementById('analyticsContentList');
+            container.innerHTML = '';
+            
+            const allContent = [...videos, ...shortsList];
+            
+            allContent.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'analytics-content-card';
+                card.onclick = () => playVideo(item);
+                card.innerHTML = `
+                    <div class="analytics-card-top">
+                        <img src="${item.thumb}" class="analytics-card-thumb" alt="${item.title}">
+                        <div class="analytics-card-info">
+                            <div class="analytics-card-title">${item.title}</div>
+                            <div class="analytics-card-time">First ${item.views} views • ${item.time || 'Short'}</div>
+                        </div>
+                    </div>
+                    <div class="analytics-card-footer">
+                        <div class="analytics-stat-item">
+                            <i class="fa-solid fa-chart-simple" style="font-size:12px;"></i>
+                            <span>${item.views}</span>
+                        </div>
+                        <div class="analytics-stat-item">
+                            <i class="fa-regular fa-thumbs-up" style="font-size:12px;"></i>
+                            <span>${item.likes}</span>
+                        </div>
+                        <div class="analytics-stat-item">
+                            <i class="fa-regular fa-comment" style="font-size:12px;"></i>
+                            <span>${item.commentsCount}</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-down" style="font-size:12px; color:#aaa;"></i>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function sortVideos(type) {
+            document.getElementById('chipLatest').classList.remove('active');
+            document.getElementById('chipPopular').classList.remove('active');
+            document.getElementById('chipOldest').classList.remove('active');
+
+            let sorted = [...videos];
+            if (type === 'latest') {
+                document.getElementById('chipLatest').classList.add('active');
+                sorted.sort((a,b) => a.order - b.order);
+            } else if (type === 'popular') {
+                document.getElementById('chipPopular').classList.add('active');
+                sorted.sort((a,b) => b.viewVal - a.viewVal);
+            } else if (type === 'oldest') {
+                document.getElementById('chipOldest').classList.add('active');
+                sorted.sort((a,b) => b.order - a.order);
+            }
+            renderVideos(sorted);
+        }
+
+        function openAboutModal() {
+            document.getElementById('aboutModal').style.display = 'flex';
+        }
+
+        function closeAboutModal() {
+            document.getElementById('aboutModal').style.display = 'none';
+        }
+
+        function openAnalytics() {
+            document.getElementById('channelView').style.display = 'none';
+            document.getElementById('shortsView').classList.remove('active');
+            document.getElementById('youTabScreen').classList.remove('active');
+            document.getElementById('analyticsView').classList.add('active');
+            document.getElementById('backBtn').style.display = 'block';
+            document.getElementById('headerTitle').style.display = 'block';
+            document.getElementById('headerTitle').innerText = 'Analytics';
+            document.getElementById('navHome').classList.remove('active');
+            document.getElementById('navShorts').classList.remove('active');
+            document.getElementById('navYou').classList.remove('active');
+        }
+
+        function openShortsTab() {
+            document.getElementById('channelView').style.display = 'none';
+            document.getElementById('analyticsView').classList.remove('active');
+            document.getElementById('youTabScreen').classList.remove('active');
+            document.getElementById('shortsView').classList.add('active');
+            document.getElementById('backBtn').style.display = 'block';
+            document.getElementById('headerTitle').style.display = 'block';
+            document.getElementById('headerTitle').innerText = 'Shorts';
+            document.getElementById('tabVideos').classList.remove('active');
+            document.getElementById('tabShorts').classList.add('active');
+            document.getElementById('navHome').classList.remove('active');
+            document.getElementById('navShorts').classList.add('active');
+            document.getElementById('navYou').classList.remove('active');
+        }
+
+        function openYouTab() {
+            document.getElementById('channelView').style.display = 'none';
+            document.getElementById('shortsView').classList.remove('active');
+            document.getElementById('analyticsView').classList.remove('active');
+            document.getElementById('youTabScreen').classList.add('active');
+            document.getElementById('backBtn').style.display = 'block';
+            document.getElementById('headerTitle').style.display = 'none';
+            document.getElementById('navHome').classList.remove('active');
+            document.getElementById('navShorts').classList.remove('active');
+            document.getElementById('navYou').classList.add('active');
+        }
+
+        function openChannel() {
+            document.getElementById('youTabScreen').classList.remove('active');
+            document.getElementById('shortsView').classList.remove('active');
+            document.getElementById('analyticsView').classList.remove('active');
+            document.getElementById('channelView').style.display = 'block';
+            document.getElementById('backBtn').style.display = 'none';
+            document.getElementById('headerTitle').style.display = 'none';
+            document.getElementById('tabVideos').classList.add('active');
+            document.getElementById('tabShorts').classList.remove('active');
+            document.getElementById('navYou').classList.remove('active');
+            document.getElementById('navShorts').classList.remove('active');
+            document.getElementById('navHome').classList.add('active');
+        }
+
+        sortVideos('latest');
+        renderComments();
+        renderAnalyticsContent();
+        renderShortsGrid();
+    </script>
+</body>
+</html>
